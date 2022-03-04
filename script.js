@@ -1,15 +1,16 @@
+//added ids for the variable array
 var timeSlots = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
 var events = {};
 
+// set my local storage pararmeters
 timeSlots.forEach(element => {
     if (localStorage.getItem(element) === null) {
         localStorage.setItem(element, '');
     }
     events[element] = localStorage.getItem(element);
 });
-
-Object.entries(events).forEach(([key, value]) => {
-    console.log('what is key!!', key) 
+//checks for the current time and tells what color to make the make row depending on time
+Object.entries(events).forEach(([key, value]) => { 
 
     document.getElementById(key).value = value
     var currentTime = moment().hour();
@@ -38,7 +39,7 @@ Object.entries(events).forEach(([key, value]) => {
     }
 });
 
-
+//function to make the code run
 function addEventToTime(timeSlot, event) {
     events[timeSlot] = event
     saveData();
